@@ -1,1 +1,66 @@
-get http://127.0.0.1:5000/produk
+### BAGIAN PRODUK
+GET http://127.0.0.1:5000/produk
+
+###
+GET http://127.0.0.1:5000/produk/2
+
+###
+POST http://127.0.0.1:5000/produk
+Content-Type: application/json
+
+{
+    "nama":"laptop Msi",
+    "kategori":"Elektronik",
+    "harga":"120.00",
+    "stok":"3"
+} 
+
+###
+PUT http://127.0.0.1:5000/produk/5
+Content-Type: application/json
+
+{
+    "nama":"Laptop MSI",
+    "kategori":"Elektronik",
+    "harga":"6000.0",
+    "stok":"5",
+    "id":"5"
+
+}
+
+###
+DELETE http://127.0.0.1:5000/produk/7
+
+
+
+### BAGIAN PELANGGAN
+GET http://127.0.0.1:5000/pelanggan
+
+###
+GET http://127.0.0.1:5000/pelanggan/1
+
+###
+POST http://127.0.0.1:5000/pelanggan
+Content-Type: application/json
+
+{
+    "nama":"kelvin",
+    "alamat":"tanjung pinang,kuantan",
+    "telepon": "0812754199"
+
+}
+
+###
+PUT http://127.0.0.1:5000/pelanggan/7
+Content-Type: application/json
+
+{
+    "nama":"kelvin",
+    "alamat":"Kunatan indah no 4",
+    "telepon":"08127541",
+    "id_pelanggan":"6"
+
+}
+
+###
+DELETE http://127.0.0.1:/5000/pelanggan/6

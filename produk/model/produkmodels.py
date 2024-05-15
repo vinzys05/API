@@ -12,9 +12,7 @@ class Produk:
 
     @staticmethod
     def from_dict(data):
-        """
-        Membuat objek Produk dari kamus data.
-        """
+
         return Produk(
             id_produk=data['id_produk'],
             nama=data['nama'],
@@ -26,9 +24,7 @@ class Produk:
         )
 
     def to_dict(self):
-        """
-        Mengonversi objek Produk menjadi kamus data.
-        """
+       
         return {
             'id_produk': self.id_produk,
             'nama': self.nama,
