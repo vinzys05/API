@@ -59,7 +59,7 @@ class Transaksicontroller:
             else:
                 return{'massage':'Data transaksi tidak ditemukan'}, 404
         except mysql.connector.Error as e:
-            print(f"Error{e}")
+            print(f"Error:{e}")
             return{'massage': 'Terjadi kesalahan saat mencari data transaksi'}, 500
         
     def tambah_transaksi(self,data):
@@ -75,7 +75,7 @@ class Transaksicontroller:
             self.db.commit()
             cursor.close()
             
-            return {'massagae': ' Data transaksi berhasil ditambahkan'}, 201 
+            return {'massage': ' Data transaksi berhasil ditambahkan'}, 201 
         except mysql.connector.Error as e:
             print(f'Error:{e}')
             return{'massage': 'Terjadi kesalahan saat menambah data transaksi'}, 500
@@ -88,10 +88,10 @@ class Transaksicontroller:
             cursor = self.db.cursor(dictionary=True)
             query = "Select * from transaksi where id_transaksi = %s"
             cursor.execute(query,(id,))
-            pelanggan = cursor.fetchone()
+            transaksi = cursor.fetchone()
             cursor.close()
             
-            if not pelanggan:
+            if not transaksi:
                 return{'massage': 'Data transaksi tidak ditemukan'}
             
             cursor = self.db.cursor()

@@ -11,20 +11,20 @@ Content-Type: application/json
 {
     "nama":"laptop Msi",
     "kategori":"Elektronik",
-    "harga":"120.00",
-    "stok":"3"
+    "harga":12000.00,
+    "stok":4
 } 
 
 ###
-PUT http://127.0.0.1:5000/produk/5
+PUT http://127.0.0.1:5000/produk/9
 Content-Type: application/json
 
 {
     "nama":"Laptop MSI",
     "kategori":"Elektronik",
-    "harga":"6000.0",
-    "stok":"4",
-    "id_produk":5
+    "harga":60000.0,
+    "stok":5,
+    "id_produk":9
 
 }
 
@@ -63,7 +63,9 @@ Content-Type: application/json
 }
 
 ###
-DELETE http://127.0.0.1:5000/pelanggan/2
+DELETE http://127.0.0.1:5000/pelanggan/11
+
+
 
 ### BAGIAN TRANSAKSI
 GET http://127.0.0.1:5000/transaksi
@@ -95,3 +97,47 @@ Content-Type: application/json
 
 ###
 #DELETE  http://127.0.0.1:5000/transaksi/3
+
+### BAGIAN DETAIL TRANSAKSI
+GET http://127.0.0.1:5000/detail
+
+###
+GET http://127.0.0.1:5000/detail/1
+
+###
+POST http://127.0.0.1:5000/detail
+Content-Type: application/json
+
+{
+    "id_transaksi":2,
+    "id_produk":3,
+    "jumlah":3,
+    "harga":100.0,
+    "total":300.0,
+    "sub_total":300.00,
+    "metode_pembayaran":"cash"
+
+
+
+
+}
+
+###
+PUT http://127.0.0.1:5000/detail/5
+Content-Type: application/json
+
+{
+    "id_transaksi":2,
+    "id_produk":3,
+    "jumlah":3,
+    "harga":100.0,
+    "total":300.0,
+    "sub_total":300.00,
+    "metode_pembayaran":"credit-card",
+    "id_detail":5
+
+
+}
+
+###
+DELETE http://127.0.0.1:5000/detail/5
