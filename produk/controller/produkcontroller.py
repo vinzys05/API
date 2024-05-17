@@ -78,10 +78,10 @@ class ProdukController:
             self.db.commit()
             cursor.close()
             
-            return {'massage': 'Data produk tidak ditemukan'}, 201
+            return {'massage': 'Data produk telah ditambahkan'}, 201
         except mysql.connector.Error as e:
             print(f"Error:{e}")
-            return{'massage': 'Terjadi kesalahan saat mencari data produk '}, 500
+            return{'massage': 'Terjadi kesalahan saat menambahkan data produk '}, 500
         
     def update_produk(self,id,data):
         try:
@@ -98,7 +98,7 @@ class ProdukController:
                 return{'massage' : 'Data produk tidak ditemukan'}, 404
             
             cursor = self.db.cursor()
-            query = "update pelanggan SET nama = %s, kategori = %s, harga = %s, stok = %s,  updated_at = NOW() where id_produk = %s"
+            query = "update produk SET nama = %s, kategori = %s, harga = %s, stok = %s,  updated_at = NOW() where id_produk = %s"
             cursor.execute(query, (data['nama'], data['kategori'], data['harga'], data['stok'], id))
             self.db.commit()
             cursor.close()

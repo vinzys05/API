@@ -23,13 +23,13 @@ Content-Type: application/json
     "nama":"Laptop MSI",
     "kategori":"Elektronik",
     "harga":"6000.0",
-    "stok":"5",
-    "id":"5"
+    "stok":"4",
+    "id_produk":5
 
 }
 
 ###
-DELETE http://127.0.0.1:5000/produk/7
+DELETE http://127.0.0.1:5000/produk/8
 
 
 
@@ -37,7 +37,7 @@ DELETE http://127.0.0.1:5000/produk/7
 GET http://127.0.0.1:5000/pelanggan
 
 ###
-GET http://127.0.0.1:5000/pelanggan/1
+GET http://127.0.0.1:5000/pelanggan/3
 
 ###
 POST http://127.0.0.1:5000/pelanggan
@@ -51,16 +51,47 @@ Content-Type: application/json
 }
 
 ###
-PUT http://127.0.0.1:5000/pelanggan/7
+PUT http://127.0.0.1:5000/pelanggan/5
 Content-Type: application/json
 
 {
-    "nama":"kelvin",
-    "alamat":"Kunatan indah no 4",
+    "nama":"kelvin Dwi Putra",
+    "alamat":"Batam indah no 4",
     "telepon":"08127541",
-    "id_pelanggan":"6"
+    "id_pelanggan":5
 
 }
 
 ###
-DELETE http://127.0.0.1:/5000/pelanggan/6
+DELETE http://127.0.0.1:5000/pelanggan/2
+
+### BAGIAN TRANSAKSI
+GET http://127.0.0.1:5000/transaksi
+
+###
+GET http://127.0.0.1:5000/transaksi/1
+
+###
+POST http://127.0.0.1:5000/transaksi
+Content-Type: application/json
+
+{
+    "id_pelanggan":5 ,
+        "tanggal":"2024-06-17"
+
+
+}
+
+###
+PUT http://127.0.0.1:5000/transaksi/1
+Content-Type: application/json
+
+{
+    "id_pelanggan":1,
+    "tanggal":"2024-05-17"
+
+
+}
+
+###
+#DELETE  http://127.0.0.1:5000/transaksi/3

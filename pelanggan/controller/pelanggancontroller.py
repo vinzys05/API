@@ -1,5 +1,5 @@
 from config.database_config import DatabaseConnector
-from produk.model.pelangganmodels import Pelanggan
+from pelanggan.model.pelangganmodels import Pelanggan
 from datetime import datetime,timedelta
 import mysql.connector
 
@@ -83,7 +83,7 @@ class Pelanggancontroller:
     def update_pelanggan(self,id,data):
         try:
             if not data:
-                return{'massage':'Data yang diterima kosong'},404
+                return{'massage':'Data yang diterima kosong'}, 404
             
             cursor = self.db.cursor(dictionary=True)
             query = "Select * from pelanggan where id_pelanggan = %s"
@@ -108,7 +108,7 @@ class Pelanggancontroller:
     def hapus_pelanggan(self,id):
         try:
             cursor = self.db.cursor()
-            query = " Delete from pelanggan where id_pelanggan = %s"
+            query = "delete from pelanggan where id_pelanggan = %s"
             cursor.execute(query,(id,))
             self.db.commit()
             affected_rows = cursor.rowcount
