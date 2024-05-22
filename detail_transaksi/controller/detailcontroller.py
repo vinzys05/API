@@ -64,20 +64,16 @@ class Detailcontroller:
         
     def tambah_detailtransaksi(self,data):
         try:
-            id_detail = data.get('id_detail')
             id_transaksi = data.get('id_transaksi')
             id_produk = data.get('id_produk')
             jumlah = data.get('jumlah')
-            harga = data.get('harga')
-            total = data.get('total')
-            sub_total = data.get('sub_total')
             metode_pembayaran = data.get('metode_pembayaran')
             created_at = datetime.now()
             updated_at = datetime.now()
             
             cursor = self.db.cursor()
-            query ="insert into detail_transaksi (id_detail, id_transaksi, id_produk, jumlah, harga, total, sub_total, metode_pembayaran, created_at, updated_at) VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s)"
-            cursor.execute(query,(id_detail, id_transaksi, id_produk, jumlah, harga, total, sub_total, metode_pembayaran, created_at, updated_at))
+            query ="insert into detail_transaksi ( id_transaksi, id_produk, jumlah, metode_pembayaran, created_at, updated_at) VALUES (%s, %s, %s, %s, %s, %s)"
+            cursor.execute(query,( id_transaksi, id_produk, jumlah, metode_pembayaran, created_at, updated_at))
             self.db.commit()
             cursor.close()
             
@@ -86,44 +82,44 @@ class Detailcontroller:
             print(f'Error:{e}')
             return{'massage': 'Terjadi kesalahan saat menambah data detail transaksi'}, 500
         
-    def update_detailtransaksi(self,id,data):
-        try:
-            if not data:
-                return{'massage':'Data yang diterima kosong'}, 404
-            
-            cursor = self.db.cursor(dictionary=True)
-            query = "Select * from detail_transaksi where id_detail = %s"
-            cursor.execute(query,(id,))
-            detailtransaksi = cursor.fetchone()
-            cursor.close()
-            
-            if not detailtransaksi:
-                return{'massage': 'Data detail transaksi tidak ditemukan'}
-            
-            cursor = self.db.cursor()
-            query = "update detail_transaksi SET id_transaksi = %s , id_produk = %s , jumlah = %s , harga = %s , total = %s , sub_total = %s , metode_pembayaran = %s , updated_at =NOW() where id_detail = %s"
-            cursor.execute(query,(data['id_transaksi'],data['id_produk'],data['jumlah'],data['harga'],data['total'],data['sub_total'],data['metode_pembayaran'], id))
-            self.db.commit()
-            cursor.close()
-            
-            return{'massage':'Data detail transaksi berhasil diperbarui'}, 200
-        except mysql.connector.Error as e:
-            print(f'Error: {e}')
-            return{'massage':'Terjadi kesalahan saat memperbarui data detail transaksi'}, 500
-        
-    def hapus_detailtransaksi(self,id):
-        try:
-            cursor = self.db.cursor()
-            query = "delete from detail_transaksi where id_detail = %s"
-            cursor.execute(query,(id,))
-            self.db.commit()
-            affected_rows = cursor.rowcount
-            cursor.close()
-            
-            if affected_rows > 0:
-                return{'massage':'Data detail transaksi berhasil di hapus'}, 200
-            else:
-                return{'massage':'Data detail transaksi tidak ditemukan'}, 404
-        except mysql.connector.Error as e:
-            print(f"Error:{e}")
-            return{'massage': 'Terjadi kesalahan saat menghapus data detail transaksi'}, 500
+    #def update_detailtransaksi(self,id,data):
+    #    try:
+    #        if not data:
+    #            return{'massage':'Data yang diterima kosong'}, 404
+    #        
+    #        cursor = self.db.cursor(dictionary=True)
+    #        query = "Select * from detail_transaksi where id_detail = %s"
+    #        cursor.execute(query,(id,))
+    #        detailtransaksi = cursor.fetchone()
+    #        cursor.close()
+    #        
+    #        if not detailtransaksi:
+    #            return{'massage': 'Data detail transaksi tidak ditemukan'}
+    #        
+    #        cursor = self.db.cursor()
+    #        query = "update detail_transaksi SET id_transaksi = %s , id_produk = %s , jumlah = %s , harga = %s , total = %s , sub_total = %s , metode_pembayaran = %s , updated_at =NOW() where id_detail = %s"
+    #        cursor.execute(query,(data['id_transaksi'],data['id_produk'],data['jumlah'],data['harga'],data['total'],data['sub_total'],data['metode_pembayaran'], id))
+    #        self.db.commit()
+    #        cursor.close()
+    #        
+    #        return{'massage':'Data detail transaksi berhasil diperbarui'}, 200
+    #    except mysql.connector.Error as e:
+    #        print(f'Error: {e}')
+    #        return{'massage':'Terjadi kesalahan saat memperbarui data detail transaksi'}, 500
+    #    
+    #def hapus_detailtransaksi(self,id):
+    #    try:
+    #        cursor = self.db.cursor()
+    #        query = "delete from detail_transaksi where id_detail = %s"
+    #        cursor.execute(query,(id,))
+    #        self.db.commit()
+    #        affected_rows = cursor.rowcount
+    #        cursor.close()
+    #        
+    #        if affected_rows > 0:
+    #            return{'massage':'Data detail transaksi berhasil di hapus'}, 200
+    #        else:
+    #            return{'massage':'Data detail transaksi tidak ditemukan'}, 404
+    #    except mysql.connector.Error as e:
+    #        print(f"Error:{e}")
+    #        return{'massage': 'Terjadi kesalahan saat menghapus data detail transaksi'}, 500

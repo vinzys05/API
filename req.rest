@@ -9,10 +9,10 @@ POST http://127.0.0.1:5000/produk
 Content-Type: application/json
 
 {
-    "nama":"laptop Msi",
+    "nama":"laptop Zepyhrus",
     "kategori":"Elektronik",
-    "harga":12000.00,
-    "stok":4
+    "harga":120000.00,
+    "stok":25
 } 
 
 ###
@@ -78,7 +78,7 @@ POST http://127.0.0.1:5000/transaksi
 Content-Type: application/json
 
 {
-    "id_pelanggan":5 ,
+    "id_pelanggan":12,
         "tanggal":"2024-06-17"
 
 
@@ -109,12 +109,9 @@ POST http://127.0.0.1:5000/detail
 Content-Type: application/json
 
 {
-    "id_transaksi":2,
-    "id_produk":3,
-    "jumlah":3,
-    "harga":100.0,
-    "total":300.0,
-    "sub_total":300.00,
+    "id_transaksi":4,
+    "id_produk":10,
+    "jumlah":4,
     "metode_pembayaran":"cash"
 
 
@@ -130,9 +127,6 @@ Content-Type: application/json
     "id_transaksi":2,
     "id_produk":3,
     "jumlah":3,
-    "harga":100.0,
-    "total":300.0,
-    "sub_total":300.00,
     "metode_pembayaran":"credit-card",
     "id_detail":5
 
