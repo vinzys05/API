@@ -24,7 +24,7 @@ class ProdukController:
                     created_at = datetime.now() - created_at
                 if isinstance(updated_at, timedelta): 
                     updated_at = datetime.now() - updated_at
-                produk = Produk(produk['id_produk'], produk['nama'], produk['kategori'], produk['harga'], produk['stok'], created_at, updated_at) 
+                produk = Produk(produk['id_produk'], produk['nama'], produk['kategori'], produk['harga'], produk['stok'],produk['id'], created_at, updated_at) 
                 produk_list.append(produk)
             
             return produk_list
@@ -55,7 +55,7 @@ class ProdukController:
                     created_at = datetime.now() - created_at
                 if isinstance(updated_at, timedelta): 
                     updated_at = datetime.now() - updated_at
-                produkobj = Produk(produk['id_produk'], produk['nama'], produk['kategori'], produk['harga'], produk['stok'], created_at, updated_at) 
+                produkobj = Produk(produk['id_produk'], produk['nama'], produk['kategori'], produk['harga'], produk['stok'],produk['id'], created_at, updated_at) 
                 return {'produk': produkobj.to_dict()}, 200
             else:
                 return {'massage': 'Data produk tidak ditemukan'}, 404
@@ -69,12 +69,13 @@ class ProdukController:
             kategori = data.get('kategori')
             harga = data.get('harga')
             stok = data.get('stok')
+            id = data.get('id')
             created_at = datetime.now()
             updated_at = datetime.now()
             
             cursor = self.db.cursor()
-            query = "insert into produk (nama, kategori, harga, stok, created_at, updated_at ) VALUES (%s, %s, %s, %s, %s, %s)"
-            cursor.execute(query, (nama, kategori, harga, stok, created_at, updated_at))
+            query = "insert into produk (nama, kategori, harga,stok,id,created_at, updated_at) VALUES (%s, %s, %s, %s, %s, %s, %s)"
+            cursor.execute(query, (nama, kategori, harga, stok,id, created_at, updated_at))
             self.db.commit()
             cursor.close()
             

@@ -2,17 +2,18 @@
 GET http://127.0.0.1:5000/produk
 
 ###
-GET http://127.0.0.1:5000/produk/2
+GET http://127.0.0.1:5000/produk/1
 
 ###
 POST http://127.0.0.1:5000/produk
 Content-Type: application/json
 
 {
-    "nama":"laptop Zepyhrus",
+    "nama":"laptop kodok",
     "kategori":"Elektronik",
     "harga":120000.00,
-    "stok":25
+    "stok":20,
+    "id":"1"
 } 
 
 ###
@@ -37,14 +38,14 @@ DELETE http://127.0.0.1:5000/produk/8
 GET http://127.0.0.1:5000/pelanggan
 
 ###
-GET http://127.0.0.1:5000/pelanggan/3
+GET http://127.0.0.1:5000/pelanggan/13
 
 ###
 POST http://127.0.0.1:5000/pelanggan
 Content-Type: application/json
 
 {
-    "nama":"kelvin",
+    "nama":"Pak Misyradi",
     "alamat":"tanjung pinang,kuantan",
     "telepon": "0812754199"
 
@@ -78,7 +79,7 @@ POST http://127.0.0.1:5000/transaksi
 Content-Type: application/json
 
 {
-    "id_pelanggan":12,
+    "id_pelanggan":13,
         "tanggal":"2024-06-17"
 
 
@@ -89,7 +90,7 @@ PUT http://127.0.0.1:5000/transaksi/1
 Content-Type: application/json
 
 {
-    "id_pelanggan":1,
+    "id_pelanggan":13,
     "tanggal":"2024-05-17"
 
 
@@ -109,9 +110,9 @@ POST http://127.0.0.1:5000/detail
 Content-Type: application/json
 
 {
-    "id_transaksi":4,
-    "id_produk":10,
-    "jumlah":4,
+    "id_transaksi":5,
+    "id_produk":1,
+    "jumlah":1,
     "metode_pembayaran":"cash"
 
 
@@ -135,3 +136,21 @@ Content-Type: application/json
 
 ###
 DELETE http://127.0.0.1:5000/detail/5
+
+
+### bagian suplayer
+GET http://127.0.0.1:5000/suplayer
+
+###
+GET http://127.0.0.1:5000/suplayer/1
+
+###
+POST http://127.0.0.1:5000/suplayer
+Content-Type: application/json
+
+{
+    "nama":"Pak Misyradi",
+    "alamat":"tanjung pinang,kuantan",
+    "telepon": "0812754199"
+
+}
